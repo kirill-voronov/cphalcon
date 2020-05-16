@@ -345,22 +345,22 @@ class Validation extends Injectable implements ValidationInterface
     /**
      * Adds filters to the field
      *
-     * @param string field
+     * @param array|string fields
      * @param array|string filters
      */
-    public function setFilters(var field, filters) -> <ValidationInterface>
+    public function setFilters(var fields, filters) -> <ValidationInterface>
     {
         var singleField;
 
-        if typeof field == "array" {
-            for singleField in field {
+        if typeof fields == "array" {
+            for singleField in fields {
                 let this->filters[singleField] = filters;
             }
-        } elseif typeof field == "string" {
-            let this->filters[field] = filters;
+        } elseif typeof fields == "string" {
+            let this->filters[fields] = filters;
         } else {
             throw new Exception(
-                "Field must be passed as array of fields or string."
+                "Fields must be passed as array of fields or string."
             );
         }
 
